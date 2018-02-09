@@ -20,11 +20,41 @@ namespace Xzy.WebWx.Demo
 
         WxManager wx = new WxManager();
         private void button1_Click(object sender, EventArgs e)
-        {      
+        {
             wx.getQrCode += Wx_getQrCode;
-            wx.getWxModel += Wx_getWxModel;
+            wx.getWxFriends += Wx_getWxFriends;
+            wx.getWxGroups += Wx_getWxGroups;
             wx.getReceiveMsg += Wx_getReceiveMsg;
+            wx.getErrMsg += Wx_getErrMsg;
+            wx.getMyWx += Wx_getMyWx;
             wx.Start();
+        }
+
+        /// <summary>
+        /// 获取微信群组信息
+        /// </summary>
+        /// <param name="model"></param>
+        private void Wx_getWxGroups(string model)
+        {
+
+        }
+
+        /// <summary>
+        /// 获取自己微信信息
+        /// </summary>
+        /// <param name="model"></param>
+        private void Wx_getMyWx(string model)
+        {
+            //获取自己微信信息
+        }
+
+        /// <summary>
+        /// 接收异常消息
+        /// </summary>
+        /// <param name="err"></param>
+        private void Wx_getErrMsg(string err)
+        {
+            //接收异常消息
         }
 
 
@@ -41,7 +71,7 @@ namespace Xzy.WebWx.Demo
         /// 获取微信登陆信息
         /// </summary>
         /// <param name="model"></param>
-        private void Wx_getWxModel(string model)
+        private void Wx_getWxFriends(string model)
         {
             //接收到登陆后的好友信息 其中UserName 是微信返回的TokenID 每次登陆会变
         }
@@ -58,7 +88,7 @@ namespace Xzy.WebWx.Demo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            wx.SendMessage(textBox1.Text,textBox2.Text);
+            wx.SendMessage(textBox1.Text, textBox2.Text);
         }
     }
 }
